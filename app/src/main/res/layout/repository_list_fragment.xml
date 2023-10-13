@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hafiz.githubrepositorysearch.ui.fragment.repository.RepositoryListViewModel" />
+            type="com.hafiz.githubrepositorysearch.viewmodel.RepositoryListViewModel" />
     </data>
 
     <ScrollView

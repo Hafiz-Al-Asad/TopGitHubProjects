@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.repository;
+package com.hafiz.githubrepositorysearch.viewmodel;
 
 import android.app.Application;
 

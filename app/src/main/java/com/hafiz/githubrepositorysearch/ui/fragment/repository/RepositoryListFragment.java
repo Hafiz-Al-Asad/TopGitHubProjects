@@ -22,6 +22,7 @@ import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitRespons
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseObject;
 import com.hafiz.githubrepositorysearch.network.retrofit.retrofitServiceImpl.RepositoryListServiceImpl;
 import com.hafiz.githubrepositorysearch.util.Utils;
+import com.hafiz.githubrepositorysearch.viewmodel.RepositoryListViewModel;
 
 import java.util.List;
 

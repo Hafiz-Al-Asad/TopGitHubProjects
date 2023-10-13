@@ -17,8 +17,8 @@ import com.hafiz.githubrepositorysearch.R;
 import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryDetailsFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
-import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
+import com.hafiz.githubrepositorysearch.viewmodel.RepositoryDetailsViewModel;
 import com.squareup.picasso.Picasso;
 
 public class RepositoryDetailsFragment extends Fragment {
