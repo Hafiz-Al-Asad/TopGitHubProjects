@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <!-- App Basic Colors -->
+    <color name="colorPrimary">#144A9D</color>
+    <color name="colorPrimaryBackground">#C3D7E6</color>
+    <color name="colorPrimaryDark">#10428F</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorAccent">#0070CC</color>
+    <color name="colorSecondary">#0070CC</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorError">@android:color/holo_red_dark</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#212121</color>
+
+    <!-- Other Colors -->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBackground">#FAFAFA</color>
+    <color name="colorBackgroundLight">#FFF8F8F8</color>
+    <color name="colorBackgroundDark">#EEEEEE</color>
+    <color name="colorComponentBackground">#FFFFFF</color>
+    <color name="colorCardViewBackground">#FFFFFF</color>
+    <color name="colorLine">#333333</color>
+    <color name="colorBlue">#24a</color>
+    <color name="colorGreen">#1b5e20</color>
+    <color name="colorGray">#444444</color>
+
+    <color name="colorTextTitle">@color/colorPrimaryDark</color>
+</resources>

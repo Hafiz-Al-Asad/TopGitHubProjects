@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">ForBrainStation</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Dialog -->
+    <string name="action_dialog_ok">OK</string>
+    <string name="dialog_title_success">Success</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_title_warning">Warning</string>
+    <string name="dialog_title_message">Message</string>
+    <string name="action_dialog_yes">Yes</string>
+    <string name="action_dialog_no">No</string>
+    <string name="action_dialog_cancel">Cancel</string>
+    <string name="action_dialog_later">Later</string>
+    <string name="action_show">Show</string>
+    <string name="dialog_title_update">Update Alert!</string>
+    <string name="action_dialog_update_and_install">Update &amp; Install</string>
+    <string name="action_dialog_skip">Skip</string>
+    <string name="action_dialog_update">Update!</string>
+    <string name="error_in_install">Error in installing App, please try again</string>
+    <string name="dialog_update">Update</string>
+
+    <!-- Dummy -->
+    <string name="dummy_string">--- ---</string>
+    <string name="dummy_string_short">---</string>
+    <string name="dummy_string_long">--- --- ---</string>
+    <string name="dummy_int">0</string>
+    <string name="dummy_double">0.0</string>
+    <string name="error_string">~~~ ~~~</string>
+
+    <!-- Progress Dialog -->
+    <string name="progress_dialog_message">Please Wait &#8230;</string> <!-- Please Wait ... -->
+    <string name="app_download_progressbar">Downloading </string>
+    <string name="app_download_progressbar_with_percentage">Downloading &#160; %s</string>
+    <string name="app_download_completed"> Download Completed</string>
+    <string name="download_size_tv">%s MB</string>
+    <string name="progressed_tv">%s%%</string>
+
+    <string name="delete_message_warning">Are you sure to delete [ %s ]?</string>
+    <string name="common_double_tv">%.2f</string>
+    <string name="common_double_to_int_tv">%.0f</string>
+    <string name="common_percentage_tv">%.1f%%</string>
+</resources>
