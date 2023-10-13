@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hafiz.githubrepositorysearch.BuildConfig;
 import com.hafiz.githubrepositorysearch.setting.AppSettings;
 
 import java.io.IOException;
@@ -73,7 +74,7 @@ public class RetrofitManager {
             Request request = chain.request();
             Request.Builder builder = request.newBuilder();
             request = builder
-                    .addHeader("App-Id", AppSettings.APP_ID)
+                    .addHeader("package-id", BuildConfig.APPLICATION_ID)
                     .build();
             Response response = chain.proceed(request);
             return response;

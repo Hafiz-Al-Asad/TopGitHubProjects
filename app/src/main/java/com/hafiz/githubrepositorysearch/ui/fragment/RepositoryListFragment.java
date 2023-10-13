@@ -11,38 +11,37 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.databinding.FragmentFirstBinding;
-import com.hafiz.githubrepositorysearch.model.UserDTO;
+import com.hafiz.githubrepositorysearch.databinding.RepositoryListFragmentBinding;
+import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitError;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseListener;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseObject;
-import com.hafiz.githubrepositorysearch.network.retrofit.retrofitServiceImpl.UserListServiceImpl;
-import com.hafiz.githubrepositorysearch.ui.fragment.user.UserListFragmentAdapter;
+import com.hafiz.githubrepositorysearch.network.retrofit.retrofitServiceImpl.RepositoryListServiceImpl;
+import com.hafiz.githubrepositorysearch.ui.fragment.user.RepositoryListFragmentAdapter;
 import com.hafiz.githubrepositorysearch.ui.fragment.user.UserListViewModel;
 import com.hafiz.githubrepositorysearch.util.Utils;
 
 import java.util.List;
 
-public class FirstFragment extends Fragment implements RetrofitResponseListener {
+public class RepositoryListFragment extends Fragment implements RetrofitResponseListener {
 
-    private FragmentFirstBinding mBinding;
+    private RepositoryListFragmentBinding mBinding;
     private UserListViewModel mViewModel;
 
     private Context mContext;
 
-    private UserListFragmentAdapter adapter;
+    private RepositoryListFragmentAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         mBinding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_first, container, false);
+                R.layout.repository_list_fragment, container, false);
         mBinding.setLifecycleOwner(this);
         return mBinding.getRoot();
 
@@ -60,18 +59,10 @@ public class FirstFragment extends Fragment implements RetrofitResponseListener 
         mViewModel = new ViewModelProvider(this).get(UserListViewModel.class);
         mBinding.setViewModel(mViewModel);
 
+        initRequest();
         initListener();
         subscribeUi();
         populateRecyclerView();
-//        subscribeUi();
-        //initRequest();
-//        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-//            }
-//        });
     }
 
     @Override
@@ -81,18 +72,22 @@ public class FirstFragment extends Fragment implements RetrofitResponseListener 
     }
 
     private void initListener() {
-        mBinding.buttonFirst.setOnClickListener(v -> requestUserList());
+//        mBinding.buttonFirst.setOnClickListener(v -> requestUserList());
+    }
+
+    private void initRequest() {
+        requestRepositoryList();
     }
 
     private void subscribeUi() {
         subscribeUiToList(mViewModel.getList());
     }
 
-    private void subscribeUiToList(LiveData<List<UserDTO>> liveData) {
+    private void subscribeUiToList(LiveData<List<RepositoryDTO>> liveData) {
         liveData.observe(getViewLifecycleOwner(), this::updateRecyclerViewData);
     }
 
-    private void updateRecyclerViewData(List<UserDTO> list) {
+    private void updateRecyclerViewData(List<RepositoryDTO> list) {
         if (adapter != null) {
             adapter.setList(list);
         }
@@ -108,13 +103,13 @@ public class FirstFragment extends Fragment implements RetrofitResponseListener 
         mBinding.recyclerView.setLayoutManager(layoutManager);
         mBinding.recyclerView.addItemDecoration(dividerItemDecoration);
 
-        adapter = new UserListFragmentAdapter(mContext);
+        adapter = new RepositoryListFragmentAdapter(mContext);
         mBinding.recyclerView.setAdapter(adapter);
     }
 
-    private void requestUserList() {
-        UserListServiceImpl service = new UserListServiceImpl(mContext, this);
-        service.request();
+    private void requestRepositoryList() {
+        RepositoryListServiceImpl service = new RepositoryListServiceImpl(mContext, this);
+        service.request("android", "stars", "desc");
     }
 
     @Override
@@ -123,14 +118,14 @@ public class FirstFragment extends Fragment implements RetrofitResponseListener 
             return;
         }
 
-        if (Utils.equals(retrofitResponseObject.getRequestCode(), UserListServiceImpl.TASK_ID)) {
+        if (Utils.equals(retrofitResponseObject.getRequestCode(), RepositoryListServiceImpl.TASK_ID)) {
             try {
                 if (retrofitResponseObject.getObject() instanceof RetrofitError) {
                     throw new Exception();
                 }
 
                 //noinspection unchecked
-                List<UserDTO> list = (List<UserDTO>) retrofitResponseObject.getObject();
+                List<RepositoryDTO> list = (List<RepositoryDTO>) retrofitResponseObject.getObject();
                 mViewModel.setList(list);
 
             } catch (Exception e) {

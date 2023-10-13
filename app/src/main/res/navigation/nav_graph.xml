@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.hafiz.githubrepositorysearch.ui.fragment.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:name="com.hafiz.githubrepositorysearch.ui.fragment.RepositoryListFragment"
+        android:label="@string/repository_list_fragment_label"
+        tools:layout="@layout/repository_list_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

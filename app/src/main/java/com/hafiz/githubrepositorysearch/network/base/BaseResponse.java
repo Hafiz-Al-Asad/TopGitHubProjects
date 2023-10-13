@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class BaseResponse {
 
+    @SerializedName("totalCount")
+    private Integer totalCount;
     @SerializedName("StatusCode")
     private int statusCode;
     @SerializedName("StatusMessage")
@@ -29,4 +31,11 @@ public class BaseResponse {
         this.statusMessage = statusMessage;
     }
 
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
 }
