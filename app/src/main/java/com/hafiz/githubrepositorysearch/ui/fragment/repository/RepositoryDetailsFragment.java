@@ -72,8 +72,8 @@ public class RepositoryDetailsFragment extends Fragment {
             mBinding.setViewModel(data);
             populateImageThumbnailSectionUi(data);
             if(data != null) {
-                String date = DateTimeUtil.getFormattedClientDateLong(data.getUpdatedAt());
-//                mBinding.tvLastUpdated.setText(date);
+//                String date = DateTimeUtil.getFormattedClientDateLong(data.getUpdatedAt());
+//               mBinding.tvLastUpdated.setText(date);
             }
         });
     }
