@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.hafiz.githubrepositorysearch.model.UserDTO" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorComponentBackground"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:textString="@{viewModel.firstName}"
+            tools:text="First Name"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextTitle"/>
+
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:format="@{@string/weekend_days_tv}"-->
+        <!--            app:arg="@{BizUtils.getCsvForDisplay(WeekDaysEnum.getDisplayList(viewModel.dayList))}"-->
+        <!--            tools:text="@string/weekend_days_tv" />-->
+
+    </LinearLayout>
+</layout>
