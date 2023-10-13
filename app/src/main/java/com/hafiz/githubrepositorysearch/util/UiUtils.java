@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.Util;
+package com.hafiz.githubrepositorysearch.util;
 
 import android.app.Activity;
 import android.content.Context;

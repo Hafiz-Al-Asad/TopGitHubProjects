@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.Util;
+package com.hafiz.githubrepositorysearch.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

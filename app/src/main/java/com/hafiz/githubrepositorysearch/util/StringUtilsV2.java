@@ -1,108 +1,10 @@
-package com.hafiz.githubrepositorysearch.Util;
+package com.hafiz.githubrepositorysearch.util;
 
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-/**
- * <p>Operations on {@link String} that are
- * <code>null</code> safe.</p>
- *
- * <ul>
- *  <li><b>IsEmpty/IsBlank</b>
- *      - checks if a String contains text</li>
- *  <li><b>Trim/Strip</b>
- *      - removes leading and trailing whitespace</li>
- *  <li><b>Equals</b>
- *      - compares two strings null-safe</li>
- *  <li><b>startsWith</b>
- *      - check if a String starts with a prefix null-safe</li>
- *  <li><b>endsWith</b>
- *      - check if a String ends with a suffix null-safe</li>
- *  <li><b>IndexOf/LastIndexOf/Contains</b>
- *      - null-safe index-of checks
- *  <li><b>IndexOfAny/LastIndexOfAny/IndexOfAnyBut/LastIndexOfAnyBut</b>
- *      - index-of any of a set of Strings</li>
- *  <li><b>ContainsOnly/ContainsNone/ContainsAny</b>
- *      - does String contains only/none/any of these characters</li>
- *  <li><b>Substring/Left/Right/Mid</b>
- *      - null-safe substring extractions</li>
- *  <li><b>SubstringBefore/SubstringAfter/SubstringBetween</b>
- *      - substring extraction relative to other strings</li>
- *  <li><b>Split/Join</b>
- *      - splits a String into an array of substrings and vice versa</li>
- *  <li><b>Remove/Delete</b>
- *      - removes part of a String</li>
- *  <li><b>Replace/Overlay</b>
- *      - Searches a String and replaces one String with another</li>
- *  <li><b>Chomp/Chop</b>
- *      - removes the last part of a String</li>
- *  <li><b>LeftPad/RightPad/Center/Repeat</b>
- *      - pads a String</li>
- *  <li><b>UpperCase/LowerCase/SwapCase/Capitalize/Uncapitalize</b>
- *      - changes the case of a String</li>
- *  <li><b>CountMatches</b>
- *      - counts the number of occurrences of one String in another</li>
- *  <li><b>IsAlpha/IsNumeric/IsWhitespace/IsAsciiPrintable</b>
- *      - checks the characters in a String</li>
- *  <li><b>DefaultString</b>
- *      - protects against a null input String</li>
- *  <li><b>Reverse/ReverseDelimited</b>
- *      - reverses a String</li>
- *  <li><b>Abbreviate</b>
- *      - abbreviates a string using ellipsis</li>
- *  <li><b>Difference</b>
- *      - compares Strings and reports on their differences</li>
- *  <li><b>LevensteinDistance</b>
- *      - the number of changes needed to change one String into another</li>
- * </ul>
- *
- * <p>The <code>StringUtils</code> class defines certain words related to
- * String handling.</p>
- *
- * <ul>
- *  <li>null - <code>null</code></li>
- *  <li>empty - a zero-length string (<code>""</code>)</li>
- *  <li>space - the space character (<code>' '</code>, char 32)</li>
- *  <li>whitespace - the characters defined by {@link Character#isWhitespace(char)}</li>
- *  <li>trim - the characters &lt;= 32 as in {@link String#trim()}</li>
- * </ul>
- *
- * <p><code>StringUtils</code> handles <code>null</code> input Strings quietly.
- * That is to say that a <code>null</code> input will return <code>null</code>.
- * Where a <code>boolean</code> or <code>int</code> is being returned
- * details vary by method.</p>
- *
- * <p>A side effect of the <code>null</code> handling is that a
- * <code>NullPointerException</code> should be considered a bug in
- * <code>StringUtils</code> (except for deprecated methods).</p>
- *
- * <p>Methods in this class give sample code to explain their operation.
- * The symbol <code>*</code> is used to indicate any input including <code>null</code>.</p>
- *
- * @author Apache Software Foundation
- * @author <a href="http://jakarta.apache.org/turbine/">Apache Jakarta Turbine</a>
- * @author <a href="mailto:jon@latchkey.com">Jon S. Stevens</a>
- * @author Daniel L. Rall
- * @author <a href="mailto:gcoladonato@yahoo.com">Greg Coladonato</a>
- * @author <a href="mailto:ed@apache.org">Ed Korthof</a>
- * @author <a href="mailto:rand_mcneely@yahoo.com">Rand McNeely</a>
- * @author <a href="mailto:fredrik@westermarck.com">Fredrik Westermarck</a>
- * @author Holger Krauth
- * @author <a href="mailto:alex@purpletech.com">Alexander Day Chaffee</a>
- * @author <a href="mailto:hps@intermeta.de">Henning P. Schmiedehausen</a>
- * @author Arun Mammen Thomas
- * @author Gary Gregory
- * @author Phil Steitz
- * @author Al Chou
- * @author Michael Davey
- * @author Reuben Sivan
- * @author Chris Hyzer
- * @author Scott Johnson
- * @version $Id: StringUtils.java 911986 2010-02-19 21:19:05Z niallp $
- * @see String
- * @since 1.0
- */
-public class StringUtils {
+public class StringUtilsV2 {
     // Performance testing notes (JDK 1.4, Jul03, scolebourne)
     // Whitespace:
     // Character.isWhitespace() is faster than WHITESPACE.indexOf()
@@ -125,6 +27,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static final String EMPTY = "";
+    public static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     /**
      * Represents a failed index search.
@@ -146,7 +49,7 @@ public class StringUtils {
      * <p>This constructor is public to permit tools that require a JavaBean
      * instance to operate.</p>
      */
-    public StringUtils() {
+    public StringUtilsV2() {
         super();
     }
 
@@ -2321,6 +2224,7 @@ public class StringUtils {
 
     // Splitting
     //-----------------------------------------------------------------------
+
     /**
      * <p>Splits the provided text into an array, using whitespace as the
      * separator.
@@ -2340,12 +2244,128 @@ public class StringUtils {
      * StringUtils.split(" abc ")    = ["abc"]
      * </pre>
      *
-     * @param str  the String to parse, may be null
+     * @param str the String to parse, may be null
      * @return an array of parsed Strings, <code>null</code> if null String input
      */
-//    public static String[] split(String str) {
-//        return split(str, null, -1);
-//    }
+    public static String[] split(String str, String separatorChars) {
+        return splitWorker(str, separatorChars, -1, false);
+    }
+
+    private static String[] splitWorker(String str, String separatorChars, int max, boolean preserveAllTokens) {
+        if (str == null) {
+            return null;
+        } else {
+            int len = str.length();
+            if (len == 0) {
+                return EMPTY_STRING_ARRAY;
+            } else {
+                List<String> list = new ArrayList();
+                int sizePlus1 = 1;
+                int i = 0;
+                int start = 0;
+                boolean match = false;
+                boolean lastMatch = false;
+                if (separatorChars != null) {
+                    if (separatorChars.length() != 1) {
+                        label87:
+                        while (true) {
+                            while (true) {
+                                if (i >= len) {
+                                    break label87;
+                                }
+
+                                if (separatorChars.indexOf(str.charAt(i)) >= 0) {
+                                    if (match || preserveAllTokens) {
+                                        lastMatch = true;
+                                        if (sizePlus1++ == max) {
+                                            i = len;
+                                            lastMatch = false;
+                                        }
+
+                                        list.add(str.substring(start, i));
+                                        match = false;
+                                    }
+
+                                    ++i;
+                                    start = i;
+                                } else {
+                                    lastMatch = false;
+                                    match = true;
+                                    ++i;
+                                }
+                            }
+                        }
+                    } else {
+                        char sep = separatorChars.charAt(0);
+
+                        label71:
+                        while (true) {
+                            while (true) {
+                                if (i >= len) {
+                                    break label71;
+                                }
+
+                                if (str.charAt(i) == sep) {
+                                    if (match || preserveAllTokens) {
+                                        lastMatch = true;
+                                        if (sizePlus1++ == max) {
+                                            i = len;
+                                            lastMatch = false;
+                                        }
+
+                                        list.add(str.substring(start, i));
+                                        match = false;
+                                    }
+
+                                    ++i;
+                                    start = i;
+                                } else {
+                                    lastMatch = false;
+                                    match = true;
+                                    ++i;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    label103:
+                    while (true) {
+                        while (true) {
+                            if (i >= len) {
+                                break label103;
+                            }
+
+                            if (Character.isWhitespace(str.charAt(i))) {
+                                if (match || preserveAllTokens) {
+                                    lastMatch = true;
+                                    if (sizePlus1++ == max) {
+                                        i = len;
+                                        lastMatch = false;
+                                    }
+
+                                    list.add(str.substring(start, i));
+                                    match = false;
+                                }
+
+                                ++i;
+                                start = i;
+                            } else {
+                                lastMatch = false;
+                                match = true;
+                                ++i;
+                            }
+                        }
+                    }
+                }
+
+                if (match || preserveAllTokens && lastMatch) {
+                    list.add(str.substring(start, i));
+                }
+
+                return (String[]) list.toArray(EMPTY_STRING_ARRAY);
+            }
+        }
+    }
 
     /**
      * <p>Splits the provided text into an array, separator specified.
@@ -4291,16 +4311,7 @@ public class StringUtils {
         return str;
     }
 
-    /**
-     * <p>Remove any &quot;\n&quot; if and only if it is at the end
-     * of the supplied String.</p>
-     *
-     * @param str the String to chomp from, must not be null
-     * @return String without chomped ending
-     * @throws NullPointerException if str is <code>null</code>
-     * @deprecated Use {@link #chomp(String)} instead.
-     * Method will be removed in Commons Lang 3.0.
-     */
+
     public static String chompLast(String str) {
         return chompLast(str, "\n");
     }
@@ -5056,26 +5067,7 @@ public class StringUtils {
         return str.toLowerCase(locale);
     }
 
-    /**
-     * <p>Capitalizes a String changing the first letter to title case as
-     * per {@link Character#toTitleCase(char)}. No other letters are changed.</p>
-     *
-     * <p>For a word based algorithm, see {@link WordUtils#capitalize(String)}.
-     * A <code>null</code> input String returns <code>null</code>.</p>
-     *
-     * <pre>
-     * StringUtils.capitalize(null)  = null
-     * StringUtils.capitalize("")    = ""
-     * StringUtils.capitalize("cat") = "Cat"
-     * StringUtils.capitalize("cAt") = "CAt"
-     * </pre>
-     *
-     * @param str the String to capitalize, may be null
-     * @return the capitalized String, <code>null</code> if null String input
-     * @see WordUtils#capitalize(String)
-     * @see #uncapitalize(String)
-     * @since 2.0
-     */
+
     public static String capitalize(String str) {
         int strLen;
         if (str == null || (strLen = str.length()) == 0) {
@@ -5539,43 +5531,12 @@ public class StringUtils {
     // Defaults
     //-----------------------------------------------------------------------
 
-    /**
-     * <p>Returns either the passed in String,
-     * or if the String is <code>null</code>, an empty String ("").</p>
-     *
-     * <pre>
-     * StringUtils.defaultString(null)  = ""
-     * StringUtils.defaultString("")    = ""
-     * StringUtils.defaultString("bat") = "bat"
-     * </pre>
-     *
-     * @param str the String to check, may be null
-     * @return the passed in String, or the empty String if it
-     * was <code>null</code>
-     * @see ObjectUtils#toString(Object)
-     * @see String#valueOf(Object)
-     */
+
     public static String defaultString(String str) {
         return str == null ? EMPTY : str;
     }
 
-    /**
-     * <p>Returns either the passed in String, or if the String is
-     * <code>null</code>, the value of <code>defaultStr</code>.</p>
-     *
-     * <pre>
-     * StringUtils.defaultString(null, "NULL")  = "NULL"
-     * StringUtils.defaultString("", "NULL")    = ""
-     * StringUtils.defaultString("bat", "NULL") = "bat"
-     * </pre>
-     *
-     * @param str        the String to check, may be null
-     * @param defaultStr the default String to return
-     *                   if the input is <code>null</code>, may be null
-     * @return the passed in String, or the default if it was <code>null</code>
-     * @see ObjectUtils#toString(Object, String)
-     * @see String#valueOf(Object)
-     */
+
     public static String defaultString(String str, String defaultStr) {
         return str == null ? defaultStr : str;
     }

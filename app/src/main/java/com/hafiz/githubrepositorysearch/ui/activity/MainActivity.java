@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch;
+package com.hafiz.githubrepositorysearch.ui.activity;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.hafiz.githubrepositorysearch.R;
 import com.hafiz.githubrepositorysearch.databinding.ActivityMainBinding;
 
 import android.view.Menu;
