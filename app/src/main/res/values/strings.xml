@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="repository_list_fragment_label">Repositories</string>
+    <string name="repository_details_label">Repository Details</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

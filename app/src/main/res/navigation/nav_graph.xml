@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.hafiz.githubrepositorysearch.ui.fragment.repository.RepositoryDetailsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/repository_details_label"
         tools:layout="@layout/repository_details_fragment">
 
         <action
