@@ -16,6 +16,8 @@ public class RepositoryDTO implements Serializable {
     private OwnerDTO owner;
     @SerializedName("description")
     private String description;
+    @SerializedName("updated_at")
+    private String updatedAt;
 
     public Long getId() {
         return id;
@@ -55,5 +57,13 @@ public class RepositoryDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

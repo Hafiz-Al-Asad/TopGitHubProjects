@@ -17,6 +17,7 @@ import com.hafiz.githubrepositorysearch.R;
 import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryDetailsFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
+import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
 import com.squareup.picasso.Picasso;
 
@@ -70,6 +71,10 @@ public class RepositoryDetailsFragment extends Fragment {
         liveData.observe(getViewLifecycleOwner(), data -> {
             mBinding.setViewModel(data);
             populateImageThumbnailSectionUi(data);
+            if(data != null) {
+                String date = DateTimeUtil.getFormattedClientDateLong(data.getUpdatedAt());
+//                mBinding.tvLastUpdated.setText(date);
+            }
         });
     }
 

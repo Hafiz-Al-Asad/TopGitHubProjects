@@ -74,6 +74,14 @@
                             tools:text="Description"
                             android:textColor="@color/colorBlack"
                             android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tv_last_updated"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="Last Updated At"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
