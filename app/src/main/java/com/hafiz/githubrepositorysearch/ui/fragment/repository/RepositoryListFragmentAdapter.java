@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.user;
+package com.hafiz.githubrepositorysearch.ui.fragment.repository;
 
 import android.app.Activity;
 import android.content.Context;

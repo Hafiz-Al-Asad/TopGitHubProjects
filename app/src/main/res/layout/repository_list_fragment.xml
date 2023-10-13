@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hafiz.githubrepositorysearch.ui.fragment.user.UserListViewModel" />
+            type="com.hafiz.githubrepositorysearch.ui.fragment.repository.RepositoryListViewModel" />
     </data>
 
     <ScrollView
@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.fragment.user.UserListFragment">
+            tools:context=".ui.fragment.repository.UserListFragment">
             <LinearLayout
                 android:id="@+id/ll_top"
                 android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.user;
+package com.hafiz.githubrepositorysearch.ui.fragment.repository;
 
 import android.app.Application;
 
@@ -8,15 +8,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
-import com.hafiz.githubrepositorysearch.model.UserDTO;
 
 import java.util.List;
 
-public class UserListViewModel extends AndroidViewModel {
+public class RepositoryListViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<RepositoryDTO>> list = new MutableLiveData<>();
 
-    public UserListViewModel(@NonNull Application application) {
+    public RepositoryListViewModel(@NonNull Application application) {
         super(application);
     }
 

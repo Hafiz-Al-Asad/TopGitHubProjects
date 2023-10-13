@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment;
+package com.hafiz.githubrepositorysearch.ui.fragment.repository;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,8 +21,6 @@ import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitError;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseListener;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseObject;
 import com.hafiz.githubrepositorysearch.network.retrofit.retrofitServiceImpl.RepositoryListServiceImpl;
-import com.hafiz.githubrepositorysearch.ui.fragment.user.RepositoryListFragmentAdapter;
-import com.hafiz.githubrepositorysearch.ui.fragment.user.UserListViewModel;
 import com.hafiz.githubrepositorysearch.util.Utils;
 
 import java.util.List;
@@ -30,7 +28,7 @@ import java.util.List;
 public class RepositoryListFragment extends Fragment implements RetrofitResponseListener {
 
     private RepositoryListFragmentBinding mBinding;
-    private UserListViewModel mViewModel;
+    private RepositoryListViewModel mViewModel;
 
     private Context mContext;
 
@@ -56,7 +54,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(UserListViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RepositoryListViewModel.class);
         mBinding.setViewModel(mViewModel);
 
         initRequest();

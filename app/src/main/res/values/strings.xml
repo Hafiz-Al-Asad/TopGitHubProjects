@@ -49,4 +49,9 @@
     <string name="common_double_tv">%.2f</string>
     <string name="common_double_to_int_tv">%.0f</string>
     <string name="common_percentage_tv">%.1f%%</string>
+
+    <!-- Repository -->
+    <string name="repository_image">Repository Image</string> <!-- Please Wait ... -->
+
+
 </resources>
