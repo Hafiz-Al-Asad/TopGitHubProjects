@@ -18,6 +18,7 @@ import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryDetailsFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.Utils;
+import com.squareup.picasso.Picasso;
 
 public class RepositoryDetailsFragment extends Fragment {
 
@@ -76,7 +77,11 @@ public class RepositoryDetailsFragment extends Fragment {
         if (repositoryDTO != null && repositoryDTO.getOwner() != null) {
             String url = repositoryDTO.getOwner().getAvatarUrl();
             if (Utils.isNotBlankString(url)) {
-
+                Picasso.get()
+                        .load(Utils.trimToNull(url))
+                        .placeholder(R.drawable.ic_product)
+                        .error(R.drawable.error_loading)
+                        .into(mBinding.ivProduct);
             }
         }
 
