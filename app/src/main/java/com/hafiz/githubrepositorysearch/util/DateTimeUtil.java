@@ -1,6 +1,7 @@
 package com.hafiz.githubrepositorysearch.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,6 +22,8 @@ public class DateTimeUtil {
     public static final String CLIENT_MINUTE_FORMAT = "mm";
     public static final String CLIENT_AM_PM_FORMAT = "a";
     public static final String DATE_AS_FILE_NAME_FORMAT = "yyyyMMdd_HHmmss";
+    public static final String GITHUB_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final String CLIENT_DATE_TIME_FORMAT_SHOW_FROM_GITHUB = "MM-dd-yyyy HH:mm";
 
     public static String getFormattedDate(String format) {
         if (format == null) {
@@ -366,5 +369,27 @@ public class DateTimeUtil {
         Calendar today = DateTimeUtil.getStartOfDay(Calendar.getInstance());
         Calendar tempCalender = DateTimeUtil.getStartOfDay((Calendar) calendar.clone());
         return tempCalender.before(today);
+    }
+
+    public static String formatDateTimeGithub(String inputDateTime) {
+        try {
+            // Parse the input string into a Date object
+            SimpleDateFormat inputFormat = new SimpleDateFormat(GITHUB_DATE_TIME_FORMAT, Locale.US);
+            Date date = inputFormat.parse(inputDateTime);
+
+
+            if (date != null) {
+                // Format the Date object into the desired format
+                SimpleDateFormat outputFormat = new SimpleDateFormat(CLIENT_DATE_TIME_FORMAT_SHOW_FROM_GITHUB, Locale.US);
+                return outputFormat.format(date);
+            } else {
+                // Handle the case where parsing fails
+                return "Invalid date format";
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            // Handle parsing exception as needed
+            return "Error parsing date";
+        }
     }
 }
