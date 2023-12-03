@@ -8,6 +8,7 @@ import com.hafiz.githubrepositorysearch.BuildConfig;
 import com.hafiz.githubrepositorysearch.setting.AppSettings;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -38,6 +39,9 @@ public class RetrofitManager {
 
     private static OkHttpClient getHttpClient() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.connectTimeout(5 * 60, TimeUnit.SECONDS);
+        httpClient.readTimeout(5 * 60, TimeUnit.SECONDS);
+        httpClient.writeTimeout(5 * 60, TimeUnit.SECONDS);
         httpClient.addInterceptor(new HeaderInterceptor());
         return httpClient.build();
     }
