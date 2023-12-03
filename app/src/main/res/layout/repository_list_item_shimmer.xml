@@ -41,7 +41,7 @@
                         android:layout_margin="8dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/ic_product"
+                        android:background="@color/shimmerColor"
                         android:contentDescription="@string/repository_image" />
 
                     <LinearLayout
@@ -55,17 +55,19 @@
                             android:id="@+id/tv_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:textString="@{viewModel.name}"
                             tools:text="Name"
                             android:textStyle="bold"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:background="@color/shimmerColor"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="4dp"/>
 
                         <TextView
                             android:id="@+id/tv_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:textString="@{viewModel.description}"
                             tools:text="Description"
+                            android:background="@color/shimmerColor"
                             android:textColor="@color/colorBlack"
                             android:textStyle="bold"/>
                     </LinearLayout>
