@@ -3,6 +3,7 @@ package com.hafiz.githubrepositorysearch.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class RepositoryDTO implements Serializable {
 
@@ -16,6 +17,12 @@ public class RepositoryDTO implements Serializable {
     private OwnerDTO owner;
     @SerializedName("description")
     private String description;
+    @SerializedName("language")
+    private String language;
+    @SerializedName("topics")
+    private List<String> topicList;
+    @SerializedName("stargazers_count")
+    private Long starCount;
     @SerializedName("updated_at")
     private String updatedAt;
 
@@ -65,5 +72,29 @@ public class RepositoryDTO implements Serializable {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public List<String> getTopicList() {
+        return topicList;
+    }
+
+    public void setTopicList(List<String> topicList) {
+        this.topicList = topicList;
+    }
+
+    public Long getStarCount() {
+        return starCount;
+    }
+
+    public void setStarCount(Long starCount) {
+        this.starCount = starCount;
     }
 }

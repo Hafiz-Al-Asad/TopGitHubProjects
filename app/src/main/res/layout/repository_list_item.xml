@@ -24,25 +24,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorComponentBackground"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_product"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_margin="8dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_product"
-                    android:contentDescription="@string/repository_image" />
-
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="center|center_vertical"
-                    android:orientation="vertical">
+                    android:background="@color/colorComponentBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_product"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_product"
+                        android:contentDescription="@string/repository_image" />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -51,19 +48,48 @@
                         app:textString="@{viewModel.name}"
                         tools:text="Name"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark" />
-
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:textSize="@dimen/_16ssp"
+                        android:textColor="@color/colorBlack"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textString="@{viewModel.description}"
+                    tools:text="Description"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/tv_description"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:textString="@{viewModel.description}"
-                        tools:text="Description"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"/>
+                        app:textString="@{viewModel.language}"
+                        tools:text="Java"
+                        app:drawableLeftCompat="@drawable/ic_dot"
+                        android:drawablePadding="@dimen/_4sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorGray" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:textLongInK="@{viewModel.starCount}"
+                        tools:text="112k"
+                        app:drawableLeftCompat="@drawable/ic_star"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:drawablePadding="@dimen/_2sdp"
+                        android:textColor="@color/colorGray" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
 </layout>
