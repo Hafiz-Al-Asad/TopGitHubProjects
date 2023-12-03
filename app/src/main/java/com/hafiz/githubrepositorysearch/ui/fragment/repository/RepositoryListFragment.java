@@ -101,6 +101,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
 
     private void requestRepositoryList() {
         RepositoryListServiceImpl service = new RepositoryListServiceImpl(mContext, this);
+        service.setProgressDialogVisibility(false);
         service.request("android", "stars", "desc");
     }
 

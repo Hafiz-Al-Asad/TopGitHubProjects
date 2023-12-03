@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -14,9 +15,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hafiz.githubrepositorysearch.R;
 import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
+import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemShimmerBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.Utils;
 import com.squareup.picasso.Picasso;
@@ -24,7 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<RepositoryListFragmentAdapter.MyViewHolder>
+public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements Filterable {
 
     private Context mContext;
@@ -33,6 +36,11 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
 
     private SearchFilter searchFilter;
 
+    private boolean isLoading = true;
+
+    private static final int VIEW_TYPE_ITEM = 1;
+    private static final int VIEW_TYPE_SHIMMER = 2;
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         RepositoryListItemBinding binding;
@@ -40,6 +48,15 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
         public MyViewHolder(RepositoryListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+    }
+
+    public static class ShimmerViewHolder extends RecyclerView.ViewHolder {
+        ShimmerFrameLayout shimmerLayout;
+
+        public ShimmerViewHolder(View itemView) {
+            super(itemView);
+            shimmerLayout = itemView.findViewById(R.id.shimmer_layout);
         }
     }
 
@@ -53,6 +70,8 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
         if (this.fullList == null) {
             this.fullList = new ArrayList<>();
         }
+
+        isLoading = false;
 
         setVisibleList(list);
     }
@@ -69,30 +88,48 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RepositoryListItemBinding binding =
-                DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                        R.layout.repository_list_item, parent, false);
-        return new MyViewHolder(binding);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        if (viewType == VIEW_TYPE_SHIMMER) {
+            RepositoryListItemShimmerBinding binding = DataBindingUtil.inflate(
+                    inflater, R.layout.repository_list_item_shimmer, parent, false);
+            return new ShimmerViewHolder(binding.getRoot());
+        } else {
+            RepositoryListItemBinding binding = DataBindingUtil.inflate(
+                    inflater, R.layout.repository_list_item, parent, false);
+            return new MyViewHolder(binding);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        RepositoryDTO dto = list.get(position);
-        holder.binding.setViewModel(dto);
-        holder.binding.executePendingBindings();
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof MyViewHolder) {
+            RepositoryDTO dto = list.get(position);
+            MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        populateImageThumbnailSectionUi(dto, holder.binding.ivProduct);
+            myViewHolder.binding.setViewModel(dto);
+            populateImageThumbnailSectionUi(dto, myViewHolder.binding.ivProduct);
+            myViewHolder.binding.executePendingBindings();
 
-        holder.itemView.setOnClickListener(v -> {
-            if (mContext instanceof Activity) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(BundleKeys.REPOSITORY_DETAILS_KEY, dto);
+            myViewHolder.itemView.setOnClickListener(v -> {
+                if (mContext instanceof Activity) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(BundleKeys.REPOSITORY_DETAILS_KEY, dto);
 
-                Navigation.findNavController(((Activity) mContext).findViewById(R.id.my_nav_host_fragment))
-                        .navigate(R.id.SecondFragment, bundle);
-            }
-        });
+                    Navigation.findNavController(((Activity) mContext).findViewById(R.id.my_nav_host_fragment))
+                            .navigate(R.id.SecondFragment, bundle);
+                }
+            });
+        } else if (holder instanceof ShimmerViewHolder) {
+            // Handle shimmer animation for shimmer items
+            ((ShimmerViewHolder) holder).shimmerLayout.startShimmer();
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return isLoading ? VIEW_TYPE_SHIMMER : VIEW_TYPE_ITEM;
     }
 
     private void populateImageThumbnailSectionUi(RepositoryDTO repositoryDTO, ImageView imageView) {
@@ -111,7 +148,7 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return isLoading ? 5 : list.size();
     }
 
     @Override
