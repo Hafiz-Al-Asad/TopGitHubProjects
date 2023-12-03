@@ -39,7 +39,6 @@
                     android:layout_gravity="center"
                     android:scrollbars="vertical"
                     tools:listitem="@layout/repository_list_item"/>
-
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

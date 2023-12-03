@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.hafiz.githubrepositorysearch.R;
@@ -95,13 +94,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
     private void populateRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mContext,
-                layoutManager.getOrientation());
-
         mBinding.recyclerView.setLayoutManager(layoutManager);
-        mBinding.recyclerView.addItemDecoration(dividerItemDecoration);
-
         adapter = new RepositoryListFragmentAdapter(mContext);
         mBinding.recyclerView.setAdapter(adapter);
     }

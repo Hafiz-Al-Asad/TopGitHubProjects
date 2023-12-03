@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -18,6 +19,7 @@ import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.Utils;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +82,8 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
         holder.binding.setViewModel(dto);
         holder.binding.executePendingBindings();
 
+        populateImageThumbnailSectionUi(dto, holder.binding.ivProduct);
+
         holder.itemView.setOnClickListener(v -> {
             if (mContext instanceof Activity) {
                 Bundle bundle = new Bundle();
@@ -89,6 +93,20 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Reposito
                         .navigate(R.id.SecondFragment, bundle);
             }
         });
+    }
+
+    private void populateImageThumbnailSectionUi(RepositoryDTO repositoryDTO, ImageView imageView) {
+        if (repositoryDTO != null && repositoryDTO.getOwner() != null) {
+            String url = repositoryDTO.getOwner().getAvatarUrl();
+            if (Utils.isNotBlankString(url)) {
+                Picasso.get()
+                        .load(Utils.trimToNull(url))
+                        .placeholder(R.drawable.ic_product)
+                        .error(R.drawable.error_loading)
+                        .into(imageView);
+            }
+        }
+
     }
 
     @Override

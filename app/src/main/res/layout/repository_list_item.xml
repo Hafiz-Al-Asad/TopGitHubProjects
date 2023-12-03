@@ -12,25 +12,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:gravity="center_vertical"
-        android:background="@color/colorComponentBackground"
         android:orientation="vertical">
-
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:textString="@{viewModel.fullName}"
-            tools:text="First Name"
-            android:textStyle="bold"
-            android:textColor="@color/colorTextTitle"/>
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/colorCardViewBackground"
+            app:cardElevation="5dp"
+            app:contentPadding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorComponentBackground"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_product"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="8dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_product"
+                    android:contentDescription="@string/repository_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:textString="@{viewModel.name}"
+                        tools:text="Name"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark" />
 
 
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:format="@{@string/weekend_days_tv}"-->
-        <!--            app:arg="@{BizUtils.getCsvForDisplay(WeekDaysEnum.getDisplayList(viewModel.dayList))}"-->
-        <!--            tools:text="@string/weekend_days_tv" />-->
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:textString="@{viewModel.description}"
+                        tools:text="Description"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_last_updated"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Last Updated At"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </layout>
