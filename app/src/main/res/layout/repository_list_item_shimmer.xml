@@ -24,56 +24,99 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/_4sdp"
                 app:cardBackgroundColor="@color/colorCardViewBackground"
+                android:layout_margin="@dimen/_4sdp"
                 app:cardElevation="5dp"
-                app:contentPadding="5dp">
+                app:contentPadding="@dimen/_8sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorComponentBackground"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorComponentBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/iv_product"
-                        android:layout_width="@dimen/_64sdp"
-                        android:layout_height="@dimen/_64sdp"
-                        android:layout_margin="8dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"
-                        android:background="@color/shimmerColor"
-                        android:contentDescription="@string/repository_image" />
+                        <ImageView
+                            android:id="@+id/iv_product"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_product"
+                            android:background="@color/colorShimmer"
+                            android:contentDescription="@string/repository_image" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            tools:text="Name"
+                            android:textStyle="bold"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:textSize="@dimen/_16ssp"
+                            android:background="@color/colorShimmer"
+                            android:textColor="@color/colorBlack"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20sdp"
+                        tools:text="Description"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/colorShimmer"
+                        android:textColor="@color/colorGray" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cg_topics"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:gravity="center|center_vertical"
-                        android:orientation="vertical">
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            tools:text="Java"
+                            app:drawableLeftCompat="@drawable/ic_dot"
+                            android:drawablePadding="@dimen/_4sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:background="@color/colorShimmer"
+                            android:textColor="@color/colorGray" />
+                        <TextView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            tools:text="112k"
+                            app:drawableLeftCompat="@drawable/ic_star"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:drawablePadding="@dimen/_2sdp"
+                            android:background="@color/colorShimmer"
+                            android:textColor="@color/colorGray" />
 
                         <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="Name"
-                            android:textStyle="bold"
-                            android:background="@color/shimmerColor"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:layout_marginBottom="@dimen/_4sdp"/>
-
-                        <TextView
-                            android:id="@+id/tv_description"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="Description"
-                            android:background="@color/shimmerColor"
-                            android:textColor="@color/colorBlack"
-                            android:textStyle="bold"/>
+                            android:id="@+id/tv_last_updated"
+                            android:layout_width="@dimen/_160sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            tools:text="Updated 17 minutes ago"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:drawablePadding="@dimen/_2sdp"
+                            android:background="@color/colorShimmer"
+                            android:textColor="@color/colorGray" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 </layout>

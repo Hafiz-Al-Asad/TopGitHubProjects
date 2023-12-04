@@ -25,14 +25,15 @@ public class BindingAdapters {
     @BindingAdapter("textLongInK")
     public static void formatNumberInK(TextView textView, Long value) {
         String text = "";
-        if (value < 1000) {
-            text = String.valueOf(value);
-        } else if (value < 1_000_000) {
-            text = String.format(Locale.getDefault(), "%.1fk", (double) value / 1000);
-        } else {
-            text = String.format(Locale.getDefault(), "%.1fM", (double) value / 1_000_000);
+        if (value != null) {
+            if (value < 1000) {
+                text = String.valueOf(value);
+            } else if (value < 1_000_000) {
+                text = String.format(Locale.getDefault(), "%.1fk", (double) value / 1000);
+            } else {
+                text = String.format(Locale.getDefault(), "%.1fM", (double) value / 1_000_000);
+            }
         }
-
         textView.setText(UiUtils.getText(textView.getContext(), text));
     }
 }
