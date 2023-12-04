@@ -3,7 +3,6 @@ package com.hafiz.githubrepositorysearch.ui.fragment.repository;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,12 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemShimmerBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
@@ -40,6 +37,12 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
     private List<RepositoryDTO> fullList = new ArrayList<>();
 
     private SearchFilter searchFilter;
+
+    public interface OnItemClickListener {
+        void onItemClick(RepositoryDTO repositoryDTO);
+    }
+
+    private OnItemClickListener listener;
 
     private boolean isLoading = true;
 
@@ -89,6 +92,10 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
         }
 
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -159,11 +166,9 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
 
             myViewHolder.itemView.setOnClickListener(v -> {
                 if (mContext instanceof Activity) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(BundleKeys.REPOSITORY_DETAILS_KEY, dto);
-
-                    Navigation.findNavController(((Activity) mContext).findViewById(R.id.my_nav_host_fragment))
-                            .navigate(R.id.SecondFragment, bundle);
+                    if (listener != null) {
+                        listener.onItemClick(dto);
+                    }
                 }
             });
         } else if (holder instanceof ShimmerViewHolder) {

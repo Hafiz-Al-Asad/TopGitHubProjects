@@ -14,18 +14,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryDetailsFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
 import com.hafiz.githubrepositorysearch.viewmodel.RepositoryDetailsViewModel;
+import com.hafiz.githubrepositorysearch.viewmodel.RepositoryListSharedViewModel;
 import com.squareup.picasso.Picasso;
 
 public class RepositoryDetailsFragment extends Fragment {
 
     private RepositoryDetailsFragmentBinding mBinding;
     private RepositoryDetailsViewModel mViewModel;
+
+    private RepositoryListSharedViewModel mSharedViewModel;
 
     private Context mContext;
 
@@ -52,20 +54,21 @@ public class RepositoryDetailsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(RepositoryDetailsViewModel.class);
+        mSharedViewModel = new ViewModelProvider(requireActivity()).get(RepositoryListSharedViewModel.class);
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            if (bundle.containsKey(BundleKeys.REPOSITORY_DETAILS_KEY)) {
-                RepositoryDTO repository = (RepositoryDTO) bundle.getSerializable(BundleKeys.REPOSITORY_DETAILS_KEY);
-                mViewModel.setRepository(repository);
-            }
-        }
+//        Bundle bundle = getArguments();
+//        if (bundle != null) {
+//            if (bundle.containsKey(BundleKeys.REPOSITORY_DETAILS_KEY)) {
+//                RepositoryDTO repository = (RepositoryDTO) bundle.getSerializable(BundleKeys.REPOSITORY_DETAILS_KEY);
+//                mViewModel.setRepository(repository);
+//            }
+//        }
 
         subscribeUi();
     }
 
     private void subscribeUi() {
-        subscribeUiToRepository(mViewModel.getRepository());
+        subscribeUiToRepository(mSharedViewModel.getRepository());
     }
 
     private void subscribeUiToRepository(LiveData<RepositoryDTO> liveData) {
