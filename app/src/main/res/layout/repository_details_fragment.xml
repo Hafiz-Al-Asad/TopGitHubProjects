@@ -60,8 +60,8 @@
                             android:id="@+id/tv_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:textString="@{viewModel.name}"
-                            tools:text="Name"
+                            app:textString="@{viewModel.owner.ownerName}"
+                            tools:text="Owner Name"
                             android:textStyle="bold"
                             android:textColor="@color/colorPrimaryDark" />
 

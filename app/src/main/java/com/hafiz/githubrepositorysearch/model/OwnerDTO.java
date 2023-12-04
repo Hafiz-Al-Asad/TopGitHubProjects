@@ -8,6 +8,8 @@ public class OwnerDTO implements Serializable {
 
     @SerializedName("id")
     private Long id;
+    @SerializedName("login")
+    private String ownerName;
     @SerializedName("description")
     private String description;
     @SerializedName("avatar_url")
@@ -35,5 +37,13 @@ public class OwnerDTO implements Serializable {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 }
