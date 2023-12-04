@@ -21,10 +21,12 @@ import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemShimmerBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
+import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -110,6 +112,23 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
 
             myViewHolder.binding.setViewModel(dto);
             populateImageThumbnailSectionUi(dto, myViewHolder.binding.ivProduct);
+            Calendar lastUpdatedTimeInCalendar = DateTimeUtil.convertToGithubTimeToCalendar(dto.getUpdatedAt());
+
+            long difference = DateTimeUtil.getDifferenceInMinutes(lastUpdatedTimeInCalendar,
+                    Calendar.getInstance());
+
+            String minuteOrHourOrDayString;
+            if (difference >= 1440) {
+                long differenceInDays = difference / 1440;
+                minuteOrHourOrDayString = "Updated " + differenceInDays + " days ago";
+            } else if (difference >= 60) {
+                long differenceInHours = difference / 60;
+                minuteOrHourOrDayString = "Updated " + differenceInHours + " hours ago";
+            } else {
+                minuteOrHourOrDayString = "Updated " + difference + " minutes ago";
+            }
+
+            myViewHolder.binding.tvLastUpdated.setText(minuteOrHourOrDayString);
             myViewHolder.binding.executePendingBindings();
 
             myViewHolder.itemView.setOnClickListener(v -> {

@@ -392,4 +392,24 @@ public class DateTimeUtil {
             return "Error parsing date";
         }
     }
+
+    public static Calendar convertToGithubTimeToCalendar(String date) {
+        return getCalendar(GITHUB_DATE_TIME_FORMAT, date);
+    }
+
+    public static long getDifferenceInMinutes(Calendar start, Calendar end) {
+        long diff = 0;
+        if (start != null && end != null) {
+            long timeInMillis1 = start.getTimeInMillis();
+            long timeInMillis2 = end.getTimeInMillis();
+
+            long differenceInMillis = timeInMillis2 - timeInMillis1;
+
+            // Convert milliseconds to minutes
+            diff = differenceInMillis / (60 * 1000);
+        }
+        return diff;
+
+    }
+
 }
