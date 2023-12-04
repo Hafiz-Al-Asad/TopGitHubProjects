@@ -2,6 +2,7 @@ package com.hafiz.githubrepositorysearch.ui.fragment.repository;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.hafiz.githubrepositorysearch.R;
 import com.hafiz.githubrepositorysearch.constant.BundleKeys;
 import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
@@ -104,6 +107,17 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
         }
     }
 
+    private void addChip(String text, ChipGroup chipGroup) {
+        if (Utils.isNotEmptyString(text)) {
+            Chip chip = new Chip(mContext);
+            chip.setText(text);
+            chip.setEnsureMinTouchTargetSize(true);
+            chip.setTextColor(mContext.getResources().getColor(R.color.colorChipText));
+            chip.setChipBackgroundColor(ColorStateList.valueOf(mContext.getResources().getColor(R.color.colorChipBackground)));
+            chipGroup.addView(chip);
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
@@ -113,6 +127,18 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
             myViewHolder.binding.setViewModel(dto);
             populateImageThumbnailSectionUi(dto, myViewHolder.binding.ivProduct);
             Calendar lastUpdatedTimeInCalendar = DateTimeUtil.convertToGithubTimeToCalendar(dto.getUpdatedAt());
+
+            if (Utils.isNotEmpty(dto.getTopicList())) {
+                myViewHolder.binding.cgTopics.removeAllViews();
+                int i = 1;
+                for (String topic : dto.getTopicList()) {
+                    if (i == 6) {
+                        break;
+                    }
+                    addChip(topic, myViewHolder.binding.cgTopics);
+                    i++;
+                }
+            }
 
             long difference = DateTimeUtil.getDifferenceInMinutes(lastUpdatedTimeInCalendar,
                     Calendar.getInstance());
