@@ -77,6 +77,9 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
 
     private void initListener() {
 //        mBinding.buttonFirst.setOnClickListener(v -> requestUserList());
+        mBinding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            requestRepositoryList();
+        });
     }
 
     private void initRequest() {
@@ -93,6 +96,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
 
     private void updateRecyclerViewData(List<RepositoryDTO> list) {
         if (adapter != null) {
+            adapter.setIsLoading(false);
             adapter.setList(list);
         }
     }
@@ -119,6 +123,9 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
     }
 
     private void requestRepositoryList() {
+        if (adapter != null) {
+            adapter.setIsLoading(true);
+        }
         RepositoryListServiceImpl service = new RepositoryListServiceImpl(mContext, this);
         service.setProgressDialogVisibility(false);
         service.request("android", "stars", "desc");
@@ -139,7 +146,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
                 //noinspection unchecked
                 List<RepositoryDTO> list = (List<RepositoryDTO>) retrofitResponseObject.getObject();
                 mViewModel.setList(list);
-
+                mBinding.swipeRefreshLayout.setRefreshing(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -72,14 +72,17 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
         this.mContext = context;
     }
 
+    public void setIsLoading(boolean isLoading) {
+        this.isLoading = isLoading;
+        notifyDataSetChanged();
+    }
+
     public void setList(List<RepositoryDTO> list) {
         this.fullList = list;
 
         if (this.fullList == null) {
             this.fullList = new ArrayList<>();
         }
-
-        isLoading = false;
 
         setVisibleList(list);
     }
