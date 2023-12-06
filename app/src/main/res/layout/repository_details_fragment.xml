@@ -3,14 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto" >
-
     <data>
-
         <variable
-            name="viewModel"
-            type="com.hafiz.githubrepositorysearch.model.RepositoryDTO" />
+            name="sharedViewModel"
+            type="com.hafiz.githubrepositorysearch.viewmodel.RepositoryListSharedViewModel" />
     </data>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -60,17 +57,16 @@
                             android:id="@+id/tv_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:textString="@{viewModel.owner.ownerName}"
+                            app:textString="@{sharedViewModel.repository.owner.ownerName}"
                             tools:text="Owner Name"
                             android:textStyle="bold"
                             android:textColor="@color/colorPrimaryDark" />
-
 
                         <TextView
                             android:id="@+id/tv_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:textString="@{viewModel.description}"
+                            app:textString="@{sharedViewModel.repository.description}"
                             tools:text="Description"
                             android:textColor="@color/colorBlack"
                             android:textStyle="bold"/>
@@ -85,9 +81,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </layout>

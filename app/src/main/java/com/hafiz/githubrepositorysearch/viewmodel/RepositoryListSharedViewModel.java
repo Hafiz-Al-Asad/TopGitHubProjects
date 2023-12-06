@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 
 public class RepositoryListSharedViewModel extends ViewModel {
+
     private MutableLiveData<RepositoryDTO> repository = new MutableLiveData<>();
 
     public LiveData<RepositoryDTO> getRepository() {

@@ -55,6 +55,7 @@ public class RepositoryDetailsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(RepositoryDetailsViewModel.class);
         mSharedViewModel = new ViewModelProvider(requireActivity()).get(RepositoryListSharedViewModel.class);
+        mBinding.setSharedViewModel(mSharedViewModel);
 
 //        Bundle bundle = getArguments();
 //        if (bundle != null) {
@@ -73,7 +74,6 @@ public class RepositoryDetailsFragment extends Fragment {
 
     private void subscribeUiToRepository(LiveData<RepositoryDTO> liveData) {
         liveData.observe(getViewLifecycleOwner(), data -> {
-            mBinding.setViewModel(data);
             populateImageThumbnailSectionUi(data);
             if (data != null) {
                 String date = DateTimeUtil.formatDateTimeGithub(data.getUpdatedAt());
