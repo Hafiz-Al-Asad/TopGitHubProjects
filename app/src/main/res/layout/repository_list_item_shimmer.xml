@@ -37,7 +37,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorComponentBackground"
+                        android:background="@drawable/rounded_border_shimmer"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -48,7 +48,6 @@
                             android:adjustViewBounds="true"
                             android:scaleType="fitCenter"
                             app:srcCompat="@drawable/ic_product"
-                            android:background="@color/colorShimmer"
                             android:contentDescription="@string/repository_image" />
 
                         <TextView
@@ -59,7 +58,6 @@
                             android:textStyle="bold"
                             android:layout_marginStart="@dimen/_2sdp"
                             android:textSize="@dimen/_16ssp"
-                            android:background="@color/colorShimmer"
                             android:textColor="@color/colorBlack"/>
                     </LinearLayout>
                     <TextView
@@ -69,7 +67,7 @@
                         tools:text="Description"
                         android:textSize="@dimen/_12ssp"
                         android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@color/colorShimmer"
+                        android:background="@drawable/rounded_border_shimmer"
                         android:textColor="@color/colorGray" />
 
                     <com.google.android.material.chip.ChipGroup
@@ -85,34 +83,40 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:orientation="horizontal">
                         <TextView
-                            android:layout_width="@dimen/_40sdp"
+                            android:layout_width="@dimen/_60sdp"
                             android:layout_height="@dimen/_20sdp"
                             tools:text="Java"
                             app:drawableLeftCompat="@drawable/ic_dot"
+                            android:paddingStart="@dimen/_8sdp"
+                            android:paddingEnd="@dimen/_8sdp"
                             android:drawablePadding="@dimen/_4sdp"
                             android:textSize="@dimen/_12ssp"
-                            android:background="@color/colorShimmer"
+                            android:background="@drawable/rounded_border_shimmer"
                             android:textColor="@color/colorGray" />
                         <TextView
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_20sdp"
                             tools:text="112k"
+                            android:paddingStart="@dimen/_8sdp"
+                            android:paddingEnd="@dimen/_8sdp"
                             app:drawableLeftCompat="@drawable/ic_star"
                             android:textSize="@dimen/_12ssp"
                             android:layout_marginStart="@dimen/_12sdp"
                             android:drawablePadding="@dimen/_2sdp"
-                            android:background="@color/colorShimmer"
+                            android:background="@drawable/rounded_border_shimmer"
                             android:textColor="@color/colorGray" />
 
                         <TextView
                             android:id="@+id/tv_last_updated"
                             android:layout_width="@dimen/_160sdp"
                             android:layout_height="@dimen/_20sdp"
+                            android:paddingStart="@dimen/_8sdp"
+                            android:paddingEnd="@dimen/_8sdp"
                             tools:text="Updated 17 minutes ago"
                             android:textSize="@dimen/_12ssp"
                             android:layout_marginStart="@dimen/_12sdp"
                             android:drawablePadding="@dimen/_2sdp"
-                            android:background="@color/colorShimmer"
+                            android:background="@drawable/rounded_border_shimmer"
                             android:textColor="@color/colorGray" />
                     </LinearLayout>
                 </LinearLayout>
