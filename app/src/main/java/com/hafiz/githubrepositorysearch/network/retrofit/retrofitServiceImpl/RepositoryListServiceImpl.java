@@ -35,7 +35,7 @@ public class RepositoryListServiceImpl extends BaseServiceImpl {
         Retrofit retrofit = RetrofitManager.getInstance();
 
         RepositoryService service = retrofit.create(RepositoryService.class);
-        Call<RepositorySearchResponse> call = service.search(queryKeyword, sortedBy, orderBy);
+        Call<RepositorySearchResponse> call = service.search("search/repositories", queryKeyword, sortedBy, orderBy);
 
         startProgressDialog();
         setApiName(call);
