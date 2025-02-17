@@ -53,16 +53,6 @@ This is an Android app built using Java and MVVM architecture that fetches and d
  ┣ 📜 README.md  
  ┣ 📜 LICENSE (if applicable)  
  ┣ 📜 build.gradle  
-🔧 Setup & Installation
-1️⃣ Clone the repository
-git clone https://github.com/your-username/github-top-repositories.git
-
-2️⃣ Open the project in Android Studio
-3️⃣ Build & Run the project on an emulator or a real device
-
-🚀 API Configuration
-This app uses the GitHub REST API. If required, you may need to generate a GitHub Personal Access Token and add it in local.properties:
-GITHUB_API_KEY="your_personal_access_token"
 
 📜 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
