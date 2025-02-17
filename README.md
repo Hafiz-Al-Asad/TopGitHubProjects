@@ -4,9 +4,6 @@ GitHub Top Repositories
 📝 Description
 This is an Android app built using Java and MVVM architecture that fetches and displays the top trending repositories on GitHub. The app uses the GitHub REST API to retrieve repository data and presents it in a clean and structured way.
 
-📸 Screenshots
-![WhatsApp Image 2025-02-17 at 7 36 12 PM](https://github.com/user-attachments/assets/2a489aad-2934-4721-805b-66e53ce5b4f9)
-
 
 🎯 Features
 ✅ Fetches and displays trending GitHub repositories
