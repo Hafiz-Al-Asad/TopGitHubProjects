@@ -1,4 +1,4 @@
-![Screenshot from 2025-02-17 19-30-16](https://github.com/user-attachments/assets/f4dab66e-df01-41a3-b9b4-096664340bc9)📌 Project Name
+📌 Project Name
 GitHub Top Repositories
 
 📝 Description
