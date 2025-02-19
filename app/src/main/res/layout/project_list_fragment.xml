@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hafiz.githubrepositorysearch.viewmodel.RepositoryListViewModel" />
+            type="com.hafiz.githubrepositorysearch.viewmodel.ProjectListViewModel" />
     </data>
 
     <ScrollView
@@ -42,7 +42,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:scrollbars="vertical"
-                        tools:listitem="@layout/repository_list_item"/>
+                        tools:listitem="@layout/project_list_item"/>
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </LinearLayout>
 

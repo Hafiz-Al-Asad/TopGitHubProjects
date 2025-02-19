@@ -11,11 +11,11 @@ import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 
 import java.util.List;
 
-public class RepositoryListViewModel extends AndroidViewModel {
+public class ProjectListViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<RepositoryDTO>> list = new MutableLiveData<>();
 
-    public RepositoryListViewModel(@NonNull Application application) {
+    public ProjectListViewModel(@NonNull Application application) {
         super(application);
     }
 

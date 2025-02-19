@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/projectList">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.hafiz.githubrepositorysearch.ui.fragment.repository.RepositoryListFragment"
+        android:id="@+id/projectList"
+        android:name="com.hafiz.githubrepositorysearch.ui.fragment.ProjectListFragment"
         android:label="@string/repository_list_fragment_label"
-        tools:layout="@layout/repository_list_fragment">
+        tools:layout="@layout/project_list_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/projectDetails" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.hafiz.githubrepositorysearch.ui.fragment.repository.RepositoryDetailsFragment"
+        android:id="@+id/projectDetails"
+        android:name="com.hafiz.githubrepositorysearch.ui.fragment.ProjectDetailsFragment"
         android:label="@string/repository_details_label"
-        tools:layout="@layout/repository_details_fragment">
+        tools:layout="@layout/project_details_fragment">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/projectList" />
     </fragment>
 </navigation>

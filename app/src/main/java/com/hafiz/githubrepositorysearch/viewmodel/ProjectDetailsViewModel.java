@@ -5,9 +5,9 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-public class RepositoryDetailsViewModel extends AndroidViewModel {
+public class ProjectDetailsViewModel extends AndroidViewModel {
 
-    public RepositoryDetailsViewModel(@NonNull Application application) {
+    public ProjectDetailsViewModel(@NonNull Application application) {
         super(application);
     }
 
