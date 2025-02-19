@@ -1,3 +1,8 @@
+#### v2.0.0 2025-02-19
+* Apk release name change
+* App icon change
+* App name changed
+
 #### v2.0.0 2023-12-03
 * Shimmer Effect
 * List ui change
