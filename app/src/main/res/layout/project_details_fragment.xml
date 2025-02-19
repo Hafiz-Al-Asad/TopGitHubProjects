@@ -6,7 +6,7 @@
     <data>
         <variable
             name="sharedViewModel"
-            type="com.hafiz.githubrepositorysearch.viewmodel.RepositoryListSharedViewModel" />
+            type="com.hafiz.githubrepositorysearch.viewmodel.ProjectListSharedViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

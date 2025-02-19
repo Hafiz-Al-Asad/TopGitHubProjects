@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.repository;
+package com.hafiz.githubrepositorysearch.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,25 +14,25 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.databinding.RepositoryDetailsFragmentBinding;
+import com.hafiz.githubrepositorysearch.databinding.ProjectDetailsFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
-import com.hafiz.githubrepositorysearch.viewmodel.RepositoryDetailsViewModel;
-import com.hafiz.githubrepositorysearch.viewmodel.RepositoryListSharedViewModel;
+import com.hafiz.githubrepositorysearch.viewmodel.ProjectDetailsViewModel;
+import com.hafiz.githubrepositorysearch.viewmodel.ProjectListSharedViewModel;
 import com.squareup.picasso.Picasso;
 
-public class RepositoryDetailsFragment extends Fragment {
+public class ProjectDetailsFragment extends Fragment {
 
-    private RepositoryDetailsFragmentBinding mBinding;
-    private RepositoryDetailsViewModel mViewModel;
+    private ProjectDetailsFragmentBinding mBinding;
+    private ProjectDetailsViewModel mViewModel;
 
-    private RepositoryListSharedViewModel mSharedViewModel;
+    private ProjectListSharedViewModel mSharedViewModel;
 
     private Context mContext;
 
-    public static RepositoryDetailsFragment newInstance() {
-        return new RepositoryDetailsFragment();
+    public static ProjectDetailsFragment newInstance() {
+        return new ProjectDetailsFragment();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class RepositoryDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater,
-                R.layout.repository_details_fragment, container, false);
+                R.layout.project_details_fragment, container, false);
         mBinding.setLifecycleOwner(this);
         return mBinding.getRoot();
     }
@@ -53,8 +53,8 @@ public class RepositoryDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RepositoryDetailsViewModel.class);
-        mSharedViewModel = new ViewModelProvider(requireActivity()).get(RepositoryListSharedViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ProjectDetailsViewModel.class);
+        mSharedViewModel = new ViewModelProvider(requireActivity()).get(ProjectListSharedViewModel.class);
         mBinding.setSharedViewModel(mSharedViewModel);
 
 //        Bundle bundle = getArguments();

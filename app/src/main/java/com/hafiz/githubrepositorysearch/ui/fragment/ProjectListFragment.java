@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.repository;
+package com.hafiz.githubrepositorysearch.ui.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,35 +16,35 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.databinding.RepositoryListFragmentBinding;
+import com.hafiz.githubrepositorysearch.databinding.ProjectListFragmentBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitError;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseListener;
 import com.hafiz.githubrepositorysearch.network.retrofit.manager.RetrofitResponseObject;
 import com.hafiz.githubrepositorysearch.network.retrofit.retrofitServiceImpl.RepositoryListServiceImpl;
 import com.hafiz.githubrepositorysearch.util.Utils;
-import com.hafiz.githubrepositorysearch.viewmodel.RepositoryListSharedViewModel;
-import com.hafiz.githubrepositorysearch.viewmodel.RepositoryListViewModel;
+import com.hafiz.githubrepositorysearch.viewmodel.ProjectListSharedViewModel;
+import com.hafiz.githubrepositorysearch.viewmodel.ProjectListViewModel;
 
 import java.util.List;
 
-public class RepositoryListFragment extends Fragment implements RetrofitResponseListener {
+public class ProjectListFragment extends Fragment implements RetrofitResponseListener {
 
-    private RepositoryListFragmentBinding mBinding;
-    private RepositoryListViewModel mViewModel;
+    private ProjectListFragmentBinding mBinding;
+    private ProjectListViewModel mViewModel;
 
-    private RepositoryListSharedViewModel mSharedViewModel;
+    private ProjectListSharedViewModel mSharedViewModel;
 
     private Context mContext;
 
-    private RepositoryListFragmentAdapter adapter;
+    private ProjectListFragmentAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         mBinding = DataBindingUtil.inflate(inflater,
-                R.layout.repository_list_fragment, container, false);
+                R.layout.project_list_fragment, container, false);
         mBinding.setLifecycleOwner(this);
         return mBinding.getRoot();
 
@@ -59,8 +59,8 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(RepositoryListViewModel.class);
-        mSharedViewModel = new ViewModelProvider(requireActivity()).get(RepositoryListSharedViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ProjectListViewModel.class);
+        mSharedViewModel = new ViewModelProvider(requireActivity()).get(ProjectListSharedViewModel.class);
         mBinding.setViewModel(mViewModel);
 
         initRequest();
@@ -105,7 +105,7 @@ public class RepositoryListFragment extends Fragment implements RetrofitResponse
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mBinding.recyclerView.setLayoutManager(layoutManager);
-        adapter = new RepositoryListFragmentAdapter(mContext);
+        adapter = new ProjectListFragmentAdapter(mContext);
         adapter.setOnItemClickListener(dto -> {
             // Handle item click here
             // Pass the selected product to the ViewModel

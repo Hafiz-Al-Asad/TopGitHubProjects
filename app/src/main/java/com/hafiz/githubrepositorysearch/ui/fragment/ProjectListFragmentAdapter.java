@@ -1,4 +1,4 @@
-package com.hafiz.githubrepositorysearch.ui.fragment.repository;
+package com.hafiz.githubrepositorysearch.ui.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,8 +18,8 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.hafiz.githubrepositorysearch.R;
-import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemBinding;
-import com.hafiz.githubrepositorysearch.databinding.RepositoryListItemShimmerBinding;
+import com.hafiz.githubrepositorysearch.databinding.ProjectListItemBinding;
+import com.hafiz.githubrepositorysearch.databinding.ProjectListItemShimmerBinding;
 import com.hafiz.githubrepositorysearch.model.RepositoryDTO;
 import com.hafiz.githubrepositorysearch.util.DateTimeUtil;
 import com.hafiz.githubrepositorysearch.util.Utils;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class ProjectListFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements Filterable {
 
     private Context mContext;
@@ -51,9 +51,9 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        RepositoryListItemBinding binding;
+        ProjectListItemBinding binding;
 
-        public MyViewHolder(RepositoryListItemBinding binding) {
+        public MyViewHolder(ProjectListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -68,7 +68,7 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
         }
     }
 
-    public RepositoryListFragmentAdapter(Context context) {
+    public ProjectListFragmentAdapter(Context context) {
         this.mContext = context;
     }
 
@@ -107,12 +107,12 @@ public class RepositoryListFragmentAdapter extends RecyclerView.Adapter<Recycler
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         if (viewType == VIEW_TYPE_SHIMMER) {
-            RepositoryListItemShimmerBinding binding = DataBindingUtil.inflate(
-                    inflater, R.layout.repository_list_item_shimmer, parent, false);
+            ProjectListItemShimmerBinding binding = DataBindingUtil.inflate(
+                    inflater, R.layout.project_list_item_shimmer, parent, false);
             return new ShimmerViewHolder(binding.getRoot());
         } else {
-            RepositoryListItemBinding binding = DataBindingUtil.inflate(
-                    inflater, R.layout.repository_list_item, parent, false);
+            ProjectListItemBinding binding = DataBindingUtil.inflate(
+                    inflater, R.layout.project_list_item, parent, false);
             return new MyViewHolder(binding);
         }
     }
