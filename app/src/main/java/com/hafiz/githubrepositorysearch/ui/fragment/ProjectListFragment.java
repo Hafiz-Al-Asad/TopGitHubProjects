@@ -117,7 +117,7 @@ public class ProjectListFragment extends Fragment implements RetrofitResponseLis
 //                    bundle.putSerializable(BundleKeys.REPOSITORY_DETAILS_KEY, dto);
 
             Navigation.findNavController(((Activity) mContext).findViewById(R.id.my_nav_host_fragment))
-                    .navigate(R.id.SecondFragment, new Bundle());
+                    .navigate(R.id.projectDetails, new Bundle());
         });
         mBinding.recyclerView.setAdapter(adapter);
     }
